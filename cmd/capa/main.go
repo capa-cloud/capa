@@ -1,10 +1,14 @@
 package main
 
 import (
-	"group.rxcloud/capa/pkg/runtime"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/spf13/cobra"
+	"group.rxcloud/capa/pkg/runtime"
+
+	log "github.com/sirupsen/logrus"
 )
 
 //func newRuntimeApp(startCmd *cli.Command) *cli.App {
@@ -94,6 +98,24 @@ import (
 //	fmt.Printf("Response Size: %d\n", res.ContentLength)
 //	fmt.Printf("Response Status: %d\n\n", res.StatusCode)
 //}
+
+var (
+	rootCmd = &cobra.Command{
+		Use:          "capa-agent",
+		Short:        "Istio Pilot agent.",
+		Long:         "Istio Pilot agent runs in the sidecar or gateway container and bootstraps Envoy.",
+		SilenceUsage: true,
+		FParseErrWhitelist: cobra.FParseErrWhitelist{
+			// Allow unknown flags for backward-compatibility.
+			UnknownFlags: true,
+		},
+	}
+)
+
+func init() {
+	log.Infof("Capa %s")
+
+}
 
 func main() {
 	// Listen on the predefined proxy port.
