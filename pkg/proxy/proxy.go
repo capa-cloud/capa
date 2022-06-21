@@ -11,7 +11,7 @@ import (
 //
 // In current Istio implementation nodes use a 4-parts '~' delimited ID.
 // Type~IPAddress~ID~Domain
-type Proxy struct {
+type ProxyConfig struct {
 	sync.RWMutex
 
 	// Type specifies the node type. First part of the ID.
