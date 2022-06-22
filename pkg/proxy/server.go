@@ -12,7 +12,7 @@ const (
 	servicePort = 80
 )
 
-// Create a structure to define the proxy functionality.
+// Proxy Create a structure to define the proxy functionality.
 type Proxy struct{}
 
 func (p *Proxy) forwardRequest(req *http.Request) (*http.Response, time.Duration, error) {
